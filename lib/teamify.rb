@@ -1,6 +1,12 @@
+require "teamify/models"
+
 require "teamify/version"
 require "teamify/engine"
 
 module Teamify
-  # Your code goes here...
+  mattr_accessor :team_class
+
+  def self.team_class
+    @@team_class.constantize
+  end
 end
