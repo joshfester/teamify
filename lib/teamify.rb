@@ -1,4 +1,5 @@
 require "teamify/models"
+require "teamify/railtie" if defined?(Rails::Railtie)
 
 require "teamify/version"
 require "teamify/engine"
