@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_15_164236) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_15_173657) do
   create_table "memberships", force: :cascade do |t|
     t.string "member_type", null: false
     t.integer "member_id", null: false
@@ -24,6 +24,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_15_164236) do
   create_table "teams", force: :cascade do |t|
     t.string "title"
     t.boolean "is_personal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

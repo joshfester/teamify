@@ -2,6 +2,8 @@ require "test_helper"
 
 class MembershipTest < ActiveSupport::TestCase
   def test_teamify
-    assert Membership.new.present?
+    membership = Membership.new
+    assert_nil membership.team
+    assert_nil membership.member
   end
 end

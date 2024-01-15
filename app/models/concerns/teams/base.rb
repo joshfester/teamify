@@ -8,7 +8,11 @@ module Teams
         class_name: TEAMIFY_MEMBERSHIP_CLASS,
         foreign_key: :team_id
 
-      has_many :members, through: :memberships
+      has_many :members,
+        through: :memberships,
+        source: :member,
+        source_type: TEAMIFY_MEMBER_CLASS
+
       has_many :invitations
     end
   end
