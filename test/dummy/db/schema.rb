@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_07_002013) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_15_164236) do
+  create_table "memberships", force: :cascade do |t|
+    t.string "member_type", null: false
+    t.integer "member_id", null: false
+    t.integer "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_type", "member_id"], name: "index_memberships_on_member"
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "title"
     t.boolean "is_personal"
@@ -18,4 +28,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_002013) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "memberships", "teams"
 end
