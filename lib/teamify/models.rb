@@ -16,16 +16,7 @@ module Teamify
         raise "Teamify:: invalid model type '#{model}'"
       end
 
-      teamify_constants concern, kwargs
       include concern
-    end
-
-    private
-
-    def teamify_constants(concern, options)
-      concern.const_set :TEAMIFY_TEAM_CLASS, options[:team_class] || DEFAULT_TEAM_CLASS
-      concern.const_set :TEAMIFY_MEMBERSHIP_CLASS, options[:membership_class] || DEFAULT_MEMBERSHIP_CLASS
-      concern.const_set :TEAMIFY_MEMBER_CLASS, options[:member_class] || DEFAULT_MEMBER_CLASS
     end
   end
 end
