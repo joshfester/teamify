@@ -1,3 +1,3 @@
 class Team < ApplicationRecord
-  Teamify::Models.teamify :team
+  teamify :team
 end

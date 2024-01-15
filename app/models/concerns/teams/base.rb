@@ -8,9 +8,5 @@ module Teams
       has_many :invitations
     end
 
-    def hello
-      "hi"
-    end
-
   end
 end

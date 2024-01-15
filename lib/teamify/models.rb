@@ -1,8 +1,13 @@
 module Teamify
   module Models
 
-    def self.teamify(model, **kwargs)
-      puts "Hello from teamify:: #{model}"
+    def teamify(model, **kwargs)
+      case model
+      when :team
+        include Teams::Base 
+      else
+        raise "Teamify:: invalid model type '#{model}'"
+      end
     end
 
   end

@@ -3,7 +3,7 @@ module Teamify
 
     initializer 'teamify.extend_active_record' do
       ActiveSupport.on_load(:active_record) do
-        include Teamify::Models
+        extend Teamify::Models
       end
     end
 
