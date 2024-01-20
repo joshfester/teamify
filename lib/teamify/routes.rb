@@ -1,7 +1,9 @@
 module Teamify
   module Routes
     def self.draw_routes(mapper, mapping_name, opts = {})
-      mapper.resources mapping_name, teamify_options(mapping_name).merge(opts)
+      mapper.scope module: :teamify do
+        mapper.resources mapping_name, teamify_options(mapping_name).merge(opts)
+      end
     end
 
     class << self
