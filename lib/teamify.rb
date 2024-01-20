@@ -1,8 +1,10 @@
 require "teamify/version"
 require "teamify/engine"
 
-require "teamify/models"
 require "teamify/railtie"
+require "teamify/models"
+require "teamify/routing_mapper"
+require "teamify/routes"
 
 module Teamify
   mattr_accessor :team_class, default: "Team"
