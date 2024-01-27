@@ -1,6 +1,6 @@
 module Teamify
   module Models
-    def teamify(model, **kwargs)
+    def teamify(model)
       concern = case model
       when :team
         Teams::Base

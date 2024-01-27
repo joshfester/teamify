@@ -1,0 +1,10 @@
+<h1>Editing membership</h1>
+
+<%= render "form", resource: @resource, team: @resource.team %>
+
+<br>
+
+<div>
+  <%= link_to "Show this membership", @resource %> |
+  <%= link_to "Back to memberships", team_memberships_path(@resource.team) %>
+</div>

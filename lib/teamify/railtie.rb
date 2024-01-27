@@ -5,9 +5,5 @@ module Teamify
         extend Teamify::Models
       end
     end
-
-    initializer "teamify.extend_action_dispatch" do
-      ActionDispatch::Routing::Mapper.include Teamify::RoutingMapper
-    end
   end
 end

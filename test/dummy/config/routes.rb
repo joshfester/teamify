@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  teamify_for :teams
+  mount Teamify::Engine => "/teamify"
 end
