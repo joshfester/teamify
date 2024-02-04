@@ -5,8 +5,10 @@ module Teamify
     include Engine.routes.url_helpers
 
     def setup
-      @team = Team.create(title: "Test Team")
-      @membership = Membership.create(team: @team, member: User.create(email: "test@example.com"))
+      @member_class = Teamify.member_class
+      @membership_class = Teamify.membership_class
+      @team = Teamify.team_class.create(title: "Test Team")
+      @membership = @membership_class.create(team: @team, member: @member_class.create(email: "test@example.com"))
     end
 
     def test_index
@@ -26,10 +28,10 @@ module Teamify
 
     def test_create
       assert_difference("Membership.count") do
-        post team_memberships_url(@team), params: {membership: {member_type: "User", member_id: User.create(email: "new@example.com").id}}
+        post team_memberships_url(@team), params: {membership: {member_type: "User", member_id: @member_class.create(email: "new@example.com").id}}
       end
 
-      assert_redirected_to membership_url(Membership.last)
+      assert_redirected_to membership_url(@membership_class.last)
     end
 
     def test_edit
@@ -38,7 +40,7 @@ module Teamify
     end
 
     def test_update
-      patch membership_url(@membership), params: {membership: {member_type: "User", member_id: User.create(email: "update@example.com").id}}
+      patch membership_url(@membership), params: {membership: {member_type: "User", member_id: @member_class.create(email: "update@example.com").id}}
       assert_redirected_to membership_url(@membership)
     end
 

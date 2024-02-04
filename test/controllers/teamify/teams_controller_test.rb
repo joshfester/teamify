@@ -5,7 +5,8 @@ module Teamify
     include Engine.routes.url_helpers
 
     def setup
-      @team = Team.create title: "Default Team"
+      @team_class = Teamify.team_class
+      @team = @team_class.create title: "Default Team"
     end
 
     def test_index
@@ -35,7 +36,7 @@ module Teamify
         post teams_url, params: {team: {title: team_title}}
       end
 
-      team = Team.last
+      team = @team_class.last
 
       assert_redirected_to team_url(team)
       follow_redirect!
