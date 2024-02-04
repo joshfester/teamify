@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @resource %>
+
+<div>
+  <%= link_to "Back to invitations", team_invitations_path(@resource.team) %>
+
+  <%= button_to "Destroy this invitation", @resource, method: :delete %>
+</div>

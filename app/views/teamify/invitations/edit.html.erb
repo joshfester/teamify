@@ -1,0 +1,10 @@
+<h1>Editing invitation</h1>
+
+<%= render "form", resource: @resource, team: @resource.team %>
+
+<br>
+
+<div>
+  <%= link_to "Show this invitation", @resource %> |
+  <%= link_to "Back to invitations", team_invitations_path(@resource.team) %>
+</div>

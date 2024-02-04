@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_15_173657) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_234040) do
+  create_table "invitations", force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.integer "from_membership_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_membership_id"], name: "index_invitations_on_from_membership_id"
+    t.index ["team_id"], name: "index_invitations_on_team_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.string "member_type", null: false
     t.integer "member_id", null: false
@@ -34,5 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_15_173657) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "invitations", "memberships", column: "from_membership_id"
+  add_foreign_key "invitations", "teams"
   add_foreign_key "memberships", "teams"
 end

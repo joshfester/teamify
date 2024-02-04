@@ -14,7 +14,7 @@ module Teamify
 
     # GET /teams/:team_id/memberships/new
     def new
-      @resource = Membership.new team: @team
+      @resource = @team.memberships.new team: @team
     end
 
     # GET /memberships/1/edit

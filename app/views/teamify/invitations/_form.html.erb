@@ -1,0 +1,19 @@
+<%# locals: (resource:, team:) -%>
+
+<%= form_with(model: resource, url: team_memberships_path(team)) do |form| %>
+  <% if resource.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+      <ul>
+        <% resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

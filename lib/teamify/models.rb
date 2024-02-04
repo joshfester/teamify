@@ -8,6 +8,8 @@ module Teamify
         Memberships::Base
       when :member
         Members::Base
+      when :invitation
+        Invitations::Base
       else
         raise "Teamify:: invalid model type '#{model}'"
       end
