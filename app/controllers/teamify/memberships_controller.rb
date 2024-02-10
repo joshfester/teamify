@@ -23,7 +23,7 @@ module Teamify
 
     # POST /teams/:team_id/memberships
     def create
-      @resource = Membership.new resource_params.merge(team: @team)
+      @resource = Teamify.membership_class.new resource_params.merge(team: @team)
 
       if @resource.save
         redirect_to @resource, notice: "Membership was successfully created."
@@ -51,11 +51,11 @@ module Teamify
 
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
-      @resource = Membership.find(params[:id])
+      @resource = Teamify.membership_class.find(params[:id])
     end
 
     def set_team
-      @team = Team.find(params[:team_id])
+      @team = Teamify.team_class.find(params[:team_id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -23,11 +23,11 @@ module Teamify
     end
 
     def new
-      @resource = Team.new
+      @resource = Teamify.team_class.new
     end
 
     def create
-      @resource = Team.new create_params
+      @resource = Teamify.team_class.new create_params
 
       if @resource.save
         redirect_to @resource, notice: "Team was successfully created."

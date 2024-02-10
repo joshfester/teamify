@@ -38,11 +38,11 @@ module Teamify
 
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
-      @resource = Invitation.find(params[:id])
+      @resource = Teamify.invitation_class.find(params[:id])
     end
 
     def set_team
-      @team = Team.find(params[:team_id])
+      @team = Teamify.team_class.find(params[:team_id])
     end
 
     # Only allow a list of trusted parameters through.
