@@ -11,17 +11,17 @@ module Teamify
       @invitation = @invitation_class.create(team: @team, from_membership: @from_membership)
     end
 
-    test "should get index" do
+    def test_index
       get team_invitations_url(@team)
       assert_response :success
     end
 
-    test "should get new" do
+    def test_new
       get new_team_invitation_url(@team)
       assert_response :success
     end
 
-    test "should create invitation" do
+    def test_create
       assert_difference("Invitation.count") do
         post team_invitations_url(@team), params: {invitation: {from_membership_id: @from_membership.id}}
       end
@@ -29,12 +29,12 @@ module Teamify
       assert_redirected_to invitation_url(@invitation_class.last)
     end
 
-    test "should show invitation" do
+    def test_show
       get invitation_url(@invitation)
       assert_response :success
     end
 
-    test "should destroy invitation" do
+    def test_destroy
       assert_difference("Invitation.count", -1) do
         delete invitation_url(@invitation)
       end
